@@ -44,4 +44,5 @@ def print_interface_info(interface_info):
                      str(int['lastUpdated'])))
         
 if __name__ == "__main__":
-    get_device_list()
+    #Put a valid DeviceID in the get_device_int function which you can get from the get_device_list.py file
+    get_device_int('04591e4f-de5e-4683-8b89-cb5dc5699df2')
