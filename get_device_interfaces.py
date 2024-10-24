@@ -18,7 +18,7 @@ def get_device_int(device_id):
     url = "https://sandboxdnac.cisco.com/api/v1/interface"
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
     querystring = {"macAddress": device_id} 
-    resp = requests.get(url, headers=hdr, params=querystring) 
+    resp = requests.get(url, headers=hdr, params=querystring, verify=False) 
     interface_info_json = resp.json()
     print_interface_info(interface_info_json)
 
