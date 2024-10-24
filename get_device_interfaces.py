@@ -14,6 +14,7 @@ def get_device_int(device_id):
     Building out function to retrieve device interface. Using requests.get
     to make a call to the network device Endpoint
     """
+    token = get_auth_token() # Get Token
     url = "https://sandboxdnac.cisco.com/api/v1/interface"
     hdr = {'x-auth-token': token, 'content-type' : 'application/json'}
     querystring = {"macAddress": device_id} 
