@@ -14,8 +14,8 @@ def get_device_list():
     print_device_list(device_list)
 
 def print_device_list(device_json):
-    print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
-          format("hostname", "mgmt IP", "serial","platformId", "SW Version", "role", "Uptime"))
+    print("{0:12}{1:17}{2:12}{3:16}{4:25}{5:10}{6:25}{7:15}".
+          format("hostname", "mgmt IP", "serial","platformId", "SW Version", "role", "Uptime", "DeviceID"))
     for device in device_json['response']:
         uptime = "N/A" if device['upTime'] is None else device['upTime']
         if device['serialNumber'] is not None and "," in device['serialNumber']:
@@ -23,13 +23,15 @@ def print_device_list(device_json):
         else:
             serialPlatformList = [(device['serialNumber'], device['platformId'])]
         for (serialNumber, platformId) in serialPlatformList:
-            print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
+            print("{0:12}{1:17}{2:12}{3:16}{4:25}{5:10}{6:25}{7:15}".
                   format(device['hostname'],
                          device['managementIpAddress'],
                          serialNumber,
                          platformId,
                          device['softwareVersion'],
-                         device['role'], uptime))
+                         device['role'],
+                         uptime,
+                         device['id']))
             
 def get_auth_token():
     """
